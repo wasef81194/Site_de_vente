@@ -23,6 +23,7 @@
         "symfony/form": "5.4.*",
         "symfony/framework-bundle": "5.4.*",
         "symfony/http-client": "5.4.*",
+        "symfony/http-foundation": "5.4.*",
         "symfony/intl": "5.4.*",
         "symfony/mailer": "5.4.*",
         "symfony/mime": "5.4.*",
@@ -41,7 +42,7 @@
         "symfony/validator": "5.4.*",
         "symfony/web-link": "5.4.*",
         "symfony/webapp-meta": "^1.0",
-        "symfony/webpack-encore-bundle": "^1.12",
+        "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "5.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
@@ -79,7 +80,6 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
