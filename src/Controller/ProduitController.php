@@ -75,7 +75,6 @@ class ProduitController extends AbstractController
      */
     public function show(Request $request,Produit $produit): Response
     {
-        dump('sucess');
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
         ]);
@@ -128,6 +127,8 @@ class ProduitController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
             foreach($produit->getImages() as $image){
                 $produit->removeImage($image);
+                unlink($this->getParameter('image_directory').'/'.$image->getNom());
+                $entityManager->remove($image);
             }
             $entityManager->remove($produit);
             $entityManager->flush();
