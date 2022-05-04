@@ -2,7 +2,7 @@
 window.onload = () => {
     // Gestion des boutons "Supprimer"
     let links = document.querySelectorAll("[data-delete-img]")
-    
+   
     // On boucle sur links
     for(link of links){
         // On écoute le clic
