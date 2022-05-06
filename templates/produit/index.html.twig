@@ -1,38 +1,57 @@
 {% extends 'base.html.twig' %}
-
-{% block javascript %}
-{% endblock %}
+{% block javascript %}{% endblock %}
 {% block body %}
+    <h1>
+        My Stock   
+    </h1>
     {{ include('produit/carousel.html.twig') }}
     <div class="container">
-    
-        <h1 class="title-home">Produits disponible</h1>
-            <div class="row row-cols-1 row-cols-md-3 g-3">
+        {#<h2 class="title-home">
+                            Produits disponible Nike   
+                        </h2>#}
+        <div class="row row-cols-1 row-cols-md-3 g-3 all-produits">
             {% for produit in produits %}
                 <div class="col">
-                    <div class="card" href="{{ path('produit_show', {'id': produit.id}) }}" data-show-card>
+                    <div class="card" href="{{ path('produit_show', {'id': produit.id}) }}" id="all-produit-home" data-show-card>
                         <div class="card-img">
-                        {% for image in produit.images %}
-                            {% if loop.index  == 1 %}
-                                <img class="card-img-top" src="{{ asset('/uploads/' ~ image.nom) }}" alt="Image du produit">
-                            {% endif %}
-                        {% else %}
-                            <img class="card-img-top" src="{{ asset('/images/produit/no_image.jpg') }}" alt="Image non disponible" >
-                        {% endfor %}
-                        </div> 
-                        <div class="card-body">
-                            <h5 class="card-title">{{ produit.nom }}</h5>
-                            {#<p class="card-text">{{ produit.description }}</p>#}
-                            <p class="card-text">{{ produit.prix }} € </p>
-                            {#<a href="#" class="btn btn-primary">Commander</a> 
-                            <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary" >show</a> 
-                            <a href="{{ path('produit_edit', {'id': produit.id}) }}" ><img class="float-start" src="{{ asset('/images/icons/edit.svg') }}" alt="Modifier"></a>#}
+                            {% for image in produit.images %}
+                                {% if loop.index  == 1 %}
+                                    <img class="card-img-top" src="{{ asset('/uploads/' ~ image.nom) }}" alt="Image du produit">
+                                    {% endif %}
+                                {% else %}
+                                    <img class="card-img-top" src="{{ asset('/images/produit/no_image.jpg') }}" alt="Image non disponible">
+                                    {% endfor %}
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{ produit.nom }}
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ produit.description }}
+                                        <span class="price">
+                                            {{ produit.prix }}
+                                            € 
+                                                                                                                                
+                                                                                    
+                                        </span>
+                                    </p>
+                                {#<a href="#" class="btn btn-primary">Commander</a> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary" >show</a> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="{{ path('produit_edit', {'id': produit.id}) }}" ><img class="float-start" src="{{ asset('/images/icons/edit.svg') }}" alt="Modifier"></a>#}
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-               
-            {% endfor %}
+                <a class="btn btn-primary float-end" href="{{ path('produit_new') }}">
+                    Create new                          
+                                                                                                                                            
+                                                                                                                        
+                                                                                                
+                                                                            
+                                                        
+                                    
+                </a>
             </div>
-        <a class="btn btn-primary float-end" href="{{ path('produit_new') }}">Create new</a>
-    </div>
-{% endblock %}
+        {% endblock %}
+        

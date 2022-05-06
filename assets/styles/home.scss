@@ -3,10 +3,20 @@
     margin-top: 10px ;
     margin-bottom: 100px;
 }
+h1{
+    font-family: 'SneakersMedium';
+}
+
 .carousel-item{
+    height:95vh;
+        filter: drop-shadow(5px 5px 10px black);
+        -webkit-filter: drop-shadow(5px 5px 10px black);
+        
+    
     img{
         max-width : 100%;
-        height: auto;
+        height: 100%;
         display: block;
+        object-fit: cover;
     }
 }
