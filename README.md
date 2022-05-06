@@ -1,7 +1,7 @@
 # Site de vente
   Projet personnel de e-commerce pour vendre des produits
 
-#Comment sa marche?
+# Comment sa marche?
 
 Ce site fonctionne grâce au langage suivant :
 
@@ -11,6 +11,6 @@ Twig
 
 Scss
 
-#Statut du site
+# Statut du site
 
 En cours de dévelopement...
