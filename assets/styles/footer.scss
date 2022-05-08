@@ -2,7 +2,7 @@ footer{
     .container{
         .reseaux{
             div{
-                margin-top: 10px;
+                margin-top: 15px;
                 display: flex;
                 justify-content: center;
                 a{
@@ -19,12 +19,12 @@ footer{
                     border-radius: 50%;
                     overflow: hidden;
                     border: 3px solid #fff;
-                    i{
-                        position: relative;
+                    transition: .5s;
+                    div{
                         color: #262626;
-                        z-index: 3;
                         padding: 0;
                         margin: 0;
+                        transition: .5s;
                     }
                 }
                 a:hover:nth-child(1){
@@ -40,10 +40,42 @@ footer{
                     background: #3b5999;
                 }
                 a:hover{
-                    i{
+                    //transform: rotateY(360deg);
+                    div{  
                         transform: rotateY(360deg);
                         color: rgb(255, 255, 255);
                     }
+                }
+            }
+        }
+        .news-letter{
+            margin-top: 25px;
+            form{
+                button:after {
+                    content: '  ➞';
+                    position: absolute;
+                    opacity: 0;  
+                    top: 5px;
+                    right: -15px;
+                    transition: 0.2s;
+                    color: #262626;
+                }
+                button{
+                    cursor: pointer;
+                    display: inline-block;
+                    position: relative;
+                    transition: 0.1s;
+                    color: white;
+                }
+                button:hover{
+                    padding-right: 35px;
+                    padding-left:8px;
+                    color: #262626;
+                    background-color: rgb(255, 255, 255);
+                }
+                button:hover:after {
+                    opacity: 1;
+                    right: 10px;
                 }
             }
         }
