@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>
-        My Stock  
-    </h1>
+    {{ include('layout/navbarre.html.twig') }}
     {{ include('produit/carousel.html.twig') }}
     <div class="container mb-5">
         {#<h2 class="title-home"> Produits disponible Nike </h2>#}
