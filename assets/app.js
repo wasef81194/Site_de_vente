@@ -17,3 +17,4 @@ import "./styles/app.scss";
 import "./bootstrap";
 import "./controllers/image.js";
 import "./controllers/card_produit.js";
+import "./controllers/show_produit.js";

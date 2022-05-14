@@ -1,0 +1,19 @@
+
+.container-produit{
+  .col{
+    width: 50%;
+  }
+  .col-text.fixed {
+    position: fixed;
+    top: 50px;
+  }
+  .col-text {
+    div{
+      margin-left: auto;
+      position:fixed;
+      margin-top: 20vh;
+      left:70%;
+      transform: translateX(-50%);
+    }
+  }
+}
