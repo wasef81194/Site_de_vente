@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="navbarre-hidd">
-        {{ include('layout/navbarre.html.twig') }}
+        {{ include('layout/navbar.html.twig') }}
     </div>
     {{ include('produit/carousel.html.twig') }}
     <div class="container mb-5">
@@ -27,6 +27,7 @@
                                     {% if difference.days <  14 %}
                                         <span class="badge bg-danger">
                                             Nouveau                             
+                                                                                    
                                         </span>
                                     {% endif %}
                                     <p class="card-text">
@@ -34,6 +35,7 @@
                                         <span class="price">
                                             {{ produit.prix }}
                                             €                                           
+                                                                                                                                
                                                                                     
                                         </span>
                                     </p>
@@ -45,10 +47,6 @@
                 </div>
                 <a class="btn btn-secondary" href="{{ path('produit_new') }}">
                     Create new        
-                                                                                         
-                                                                            
-                                                        
-                                    
                 </a>
             </div>
             {{ include('layout/footer.html.twig') }}

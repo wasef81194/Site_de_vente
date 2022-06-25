@@ -1,0 +1,22 @@
+nav{
+    .container-fluid{
+        .form-search{
+            width: 100%;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        div{
+            .navbar-nav{
+                margin-left: auto !important;
+                .nav-item{
+                    margin-right: 15px;
+                    .nav-link{
+                        .bi{
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
