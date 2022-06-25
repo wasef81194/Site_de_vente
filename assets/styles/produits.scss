@@ -14,6 +14,13 @@
                 border-right: none;
                 border-radius: 0%;
                 margin: 20px;
+                .badge{
+                    display: inline; 
+                    margin-left: 8px;
+                }
+                h5{
+                    display: inline; 
+                }
                 .card-img{
                     height: 350px;
                     overflow: hidden; 

@@ -39,6 +39,11 @@ class Produit
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -111,6 +116,18 @@ class Produit
                 $image->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
