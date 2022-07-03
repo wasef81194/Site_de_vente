@@ -1,16 +1,20 @@
-
-.container-produit{
+.container-produit
+{
   padding-left:0 !important;
   padding-right:0 !important;
-  .col{
+  .col
+  {
     width: 50%;
   }
-  .col-text.fixed {
+  .col-text.fixed 
+  {
     position: fixed;
     top: 50px;
   }
-  .col-text {
-    div{
+  .col-text 
+  {
+    div
+    {
       margin-left: auto;
       position:fixed;
       margin-top: 20vh;

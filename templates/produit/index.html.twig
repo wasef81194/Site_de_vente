@@ -1,54 +1,50 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="navbarre-hidd">
+    <div class="the-navbar">
         {{ include('layout/navbar.html.twig') }}
     </div>
     {{ include('produit/carousel.html.twig') }}
     <div class="container mb-5">
         {#<h2 class="title-home"> Produits disponible Nike </h2>#}
-        <div class="row row-cols-1 row-cols-md-3 g-3 all-produits">
-            {% for produit in produits %}
-                <div class="col">
-                    <div class="card" href="{{ path('produit_show', {'id': produit.id}) }}" id="all-produit-home" data-show-card>
-                        <div class="card-img">
-                            {% for image in produit.images %}
-                                {% if loop.index  == 1 %}
-                                    <img class="card-img-top" src="{{ asset('/uploads/' ~ image.nom) }}" alt="Image du produit">
-                                    {% endif %}
-                                {% else %}
-                                    <img class="card-img-top" src="{{ asset('/images/produit/no_image.jpg') }}" alt="Image non disponible">
-                                    {% endfor %}
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        {{ produit.nom }}
-                                    </h5>
-                                    {% set difference = date( "now" | date() ).diff(date(produit.date)) %}
-                                    {% if difference.days <  14 %}
-                                        <span class="badge bg-danger">
-                                            Nouveau                             
-                                                                                    
-                                        </span>
-                                    {% endif %}
-                                    <p class="card-text">
-                                        {{ produit.description }}
-                                        <span class="price">
-                                            {{ produit.prix }}
-                                            €                                           
-                                                                                                                                
-                                                                                    
-                                        </span>
-                                    </p>
-                                {#<a href="#" class="btn btn-primary">Commander</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <a href="{{ path('produit_edit', {'id': produit.id}) }}" ><img class="float-start" src="{{ asset('/images/icons/edit.svg') }}" alt="Modifier"></a>#}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+    <div class="row row-cols-1 row-cols-md-3 g-3 all-produits">
+    {% for produit in produits %}
+        <div class="col">
+            <div class="card" href="{{ path('produit_show', {'id': produit.id}) }}" id="all-produit-home" data-show-card>
+                <div class="card-img">
+                    {% for image in produit.images %}
+                        {% if loop.index  == 1 %}
+                             <img class="card-img-top" src="{{ asset('/uploads/' ~ image.nom) }}" alt="Image du produit">
+                        {% endif %}
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('/images/produit/no_image.jpg') }}" alt="Image non disponible">
+                        {% endfor %}
+                    </div>
+                    <div class="card-body">
+                         <h5 class="card-title">
+                            {{ produit.nom }}
+                        </h5>
+                        {% set difference = date( "now" | date() ).diff(date(produit.date)) %}
+                        {% if difference.days <  14 %}
+                        <span class="badge bg-danger">
+                             Nouveau                  
+                        </span>
+                        {% endif %}
+                        <p class="card-text">
+                             {{ produit.description }}
+                            <span class="price">
+                                 {{ produit.prix }} €                                     
+                            </span>
+                        </p>
+                    {#<a href="#" class="btn btn-primary">Commander</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <a href="{{ path('produit_edit', {'id': produit.id}) }}" ><img class="float-start" src="{{ asset('/images/icons/edit.svg') }}" alt="Modifier"></a>#}
+                    </div>
                 </div>
-                <a class="btn btn-secondary" href="{{ path('produit_new') }}">
-                    Create new        
-                </a>
             </div>
-            {{ include('layout/footer.html.twig') }}
-        {% endblock %}
+            {% endfor %}
+        </div>
+        <a class="btn btn-secondary" href="{{ path('produit_new') }}">
+             Create new        
+        </a>
+    </div>
+   {{ include('layout/footer.html.twig') }}
+{% endblock %}
         

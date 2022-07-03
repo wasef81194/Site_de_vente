@@ -1,0 +1,42 @@
+body
+{
+    .connexion{
+        .card-connexion
+        {
+            //background-color: rgb(21, 255, 0) !important;
+            padding: 3.5em;
+            width: 50%;
+            border-color: rgba(7, 172, 7, 0.24);
+            h2{
+                text-align: center;
+            }
+            form{
+                input:focus
+                {
+                    border-color: rgb(18, 209, 18);
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(104, 239, 183, 0.6);
+                }
+                .btn, .btn:focus
+                {
+                    color: white;
+                    background-color : rgb(7, 172, 7);
+                    border-color: rgb(18, 209, 18);
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(104, 239, 183, 0.6);
+
+                }
+                .btn:hover
+                {
+                    background-color : rgb(18, 209, 18);
+                    border-color:  rgb(7, 172, 7);
+
+                }
+            }
+            .alert{
+                text-align: center;
+            }
+            p{
+                text-align: center;
+            }
+        }
+    }
+}
