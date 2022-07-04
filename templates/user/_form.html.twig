@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+        <div class="mb-3">
+            {{ form_label(form.email) }}
+            <span class="error"> {{ form_errors(form.email) }} </span>
+            {{ form_widget(form.email) }}
+        </div>
+        <div>
+            <span class="error">  {{ form_errors(form.password) }} </span>
+            {{ form_widget(form.password) }}
+        </div>
+    <div class="d-grid gap-2 col-6 mx-auto mt-4">
+        <button class="btn btn-send mt-4 mb-4" type="submit"> {{ button_label|default('Enregistrer') }}</button>
+    </div>
 {{ form_end(form) }}
