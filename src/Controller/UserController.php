@@ -29,8 +29,6 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dump(str_replace("+33","0",$user->getTelephone()));
-            //dump( $userRepository->findOneBy(['telephone'=>$user->getTelephone()]));
             //met tout en 0 et pas en +33
             $user->setTelephone(str_replace("+33","0",$user->getTelephone()));
             //hash le mot de passe

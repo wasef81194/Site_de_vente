@@ -36,13 +36,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @Assert\Regex(pattern="/^[A-Z][\p{L}-]*$/", message="Entrer un nom valide.") 
+     * @Assert\Regex(pattern="/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u", message="Entrer un nom valide.") 
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @Assert\Regex(pattern="/^[A-Z][\p{L}-]*$/", message="Entrer un prénom valide.") 
+     * @Assert\Regex(pattern="/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u", message="Entrer un prénom valide.") 
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
