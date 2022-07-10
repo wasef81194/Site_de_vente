@@ -6,7 +6,18 @@
 <div class="container-fluid inscription">
     <div class="card card-inscription position-absolute top-50 start-50 translate-middle shadow-lg p-5 mb-8 rounded">
         <h2>Inscrivez-vous</h2>
-
+        <!--Sucess Message -->
+        {% for message in app.flashes('success')%}
+            <div class="alert alert-success center" role="alert" id="sucess">
+                <span>{{message}}<span>
+            </div>
+        {% endfor %}
+         <!--Error Message -->
+        {% for message in app.flashes('error')%}
+            <div class="alert alert-danger center" role="alert" id="sucess">
+                <span>{{message}}<span>
+            </div>
+        {% endfor %}
         {{ include('user/_form.html.twig') }}
         <p> Vous avez déja un compte <a href="{{ path('app_login') }}"> connectez-vous </a> </p>
     </div>

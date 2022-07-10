@@ -1,14 +1,36 @@
 {{ form_start(form) }}
-        <div class="mb-3">
+    <div class="row">
+        <div class="col-md">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom) }}
+            <span class="error"> {{ form_errors(form.nom) }} </span>
+        </div>
+        <div class="col-md">
+            {{ form_label(form.prenom) }}
+            {{ form_widget(form.prenom) }}
+            <span class="error"> {{ form_errors(form.prenom) }} </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
             {{ form_label(form.email) }}
-            <span class="error"> {{ form_errors(form.email) }} </span>
             {{ form_widget(form.email) }}
+            <span class="error"> {{ form_errors(form.email) }} </span>
         </div>
-        <div>
-            <span class="error">  {{ form_errors(form.password) }} </span>
+        <div class="col-md">
+            {{ form_label(form.telephone) }}
+            {{ form_widget(form.telephone) }}
+            <span class="error"> {{ form_errors(form.telephone) }} </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             {{ form_widget(form.password) }}
+            <span class="error">  {{ form_errors(form.password) }} </span>
         </div>
+    </div>
     <div class="d-grid gap-2 col-6 mx-auto mt-4">
         <button class="btn btn-send mt-4 mb-4" type="submit"> {{ button_label|default('Enregistrer') }}</button>
     </div>
+   
 {{ form_end(form) }}

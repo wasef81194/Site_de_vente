@@ -6,7 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
@@ -36,11 +36,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+     * @Assert\Regex(pattern="/^[A-Z][\p{L}-]*$/", message="Entrer un nom valide.") 
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
+     * @Assert\Regex(pattern="/^[A-Z][\p{L}-]*$/", message="Entrer un prénom valide.") 
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
@@ -51,12 +53,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $adresse;
 
     /**
+     * @Assert\Regex(pattern="/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/", message="Entrer un code postal valide.") 
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cp;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min = 10, max = 13, minMessage = "Un numéro de télephone comporte un minimum 10 caractère.", maxMessage = "Un numéro de télephone comporte un maximum 13 caractère.")
+     * @Assert\Regex(pattern="/^((\+|00)33\s?|0)[67](\s?\d{2}){4}$/", message="Entrer un numéro de télephone valide.") 
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $telephone;
 

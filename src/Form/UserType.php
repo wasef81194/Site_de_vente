@@ -10,16 +10,40 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('nom',TextType::class,[
+                'required'=> true,
+                'constraints' => [
+                    new NotBlank(["message" => "Entrer un nom valide"]),
+                ]
+            ],
+            )
+            ->add('prenom',TextType::class,[
+                'required'=> true,
+                'label'=>'Prénom',
+                'constraints' => [
+                    new NotBlank(["message" => "Entrer un nom valide"]),
+                ]
+            ],
+            )
             ->add('email',EmailType::class,[
                 'required'=> true,
                 'constraints' => [
-                new NotBlank(["message" => "Entrer un email valid"]),
+                new NotBlank(["message" => "Entrer un email valide"]),
+                ]
+            ],
+            )
+            ->add('telephone',TelType::class,[
+                'required'=> true,
+                'label'=>'Téléphone',
+                'constraints' => [
+                new NotBlank(["message" => "Entrer un numéro de télephone valide"]),
                 ]
             ],
             )

@@ -28,16 +28,27 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            dump(str_replace("+33","0",$user->getTelephone()));
+            //dump( $userRepository->findOneBy(['telephone'=>$user->getTelephone()]));
+            //met tout en 0 et pas en +33
+            $user->setTelephone(str_replace("+33","0",$user->getTelephone()));
+            //hash le mot de passe
             $hash = $encoder->hashPassword($user , $user->getPassword());
-            $user ->setPassword($hash);
+            $user->setPassword($hash);
+            //ajoute un role à l'utilisateur
             $user->setRoles(['ROLE_USER']);
-            $userRepository->add($user, true);
-
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            if($userRepository->findOneBy(['telephone'=>$user->getTelephone()])){
+                $this->addFlash('error', 'Ce numéro de télephone est déja associé à un compte.');
+            }
+            else{
+                $userRepository->add($user, true);
+                // envoie un message de succes
+                $this->addFlash('success', 'Un mail vous à été envoyer, afin de procéder à une verification de votre compte.');
+            }
+            
+            
         }
-
         return $this->renderForm('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
