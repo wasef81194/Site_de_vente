@@ -40,9 +40,14 @@ class Produit
     private $images;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_delete;
 
     public function __construct()
     {
@@ -128,6 +133,18 @@ class Produit
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getDateDelete(): ?\DateTimeInterface
+    {
+        return $this->date_delete;
+    }
+
+    public function setDateDelete(?\DateTimeInterface $date_delete): self
+    {
+        $this->date_delete = $date_delete;
 
         return $this;
     }

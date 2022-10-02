@@ -36,15 +36,16 @@ class ProduitRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Produit
+    //  * @return Produit[] Returns an array of Produit objects
+    public function findProductsNoDelete()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            return $this->createQueryBuilder('p')
+            ->andWhere('p.date_delete = :null')
+            ->setParameter('null', 'NULL')
+            ->orderBy('p.id', 'ASC')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+    
 }

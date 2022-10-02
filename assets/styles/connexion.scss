@@ -6,28 +6,28 @@ body
             //background-color: rgb(21, 255, 0) !important;
             padding: 3.5em;
             width: 50%;
-            border-color: rgba(7, 172, 7, 0.24);
+            border-color: $border-pruple;
             h2{
                 text-align: center;
             }
             form{
                 input:focus
                 {
-                    border-color: rgb(18, 209, 18);
-                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(104, 239, 183, 0.6);
+                    border-color: $border-pruple;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $background-shadow-pruple;
                 }
                 .btn, .btn:focus
                 {
                     color: white;
-                    background-color : rgb(7, 172, 7);
-                    border-color: rgb(18, 209, 18);
-                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(104, 239, 183, 0.6);
+                    background-color :$background-pruple-light;
+                    border-color: $border-pruple;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $background-shadow-pruple;
 
                 }
                 .btn:hover
                 {
-                    background-color : rgb(18, 209, 18);
-                    border-color:  rgb(7, 172, 7);
+                    background-color :$background-hover-pruple;
+                    border-color: $border-pruple;
 
                 }
             }

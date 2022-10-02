@@ -25,7 +25,7 @@ class ProduitController extends AbstractController
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('produit/index.html.twig', [
-            'produits' => $produitRepository->findAll(),
+            'produits' => $produitRepository->findProductsNoDelete(),
         ]);
     }
 
@@ -58,6 +58,7 @@ class ProduitController extends AbstractController
                 $produit->addImage($img); 
                 
             }
+            $produit->setDate(new \DateTime('@'.strtotime('now')));
             $entityManager->persist($produit);// mettre cascase dans la variable images 
             $entityManager->flush();
 
@@ -125,12 +126,13 @@ class ProduitController extends AbstractController
     public function delete(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
-            foreach($produit->getImages() as $image){
+           /* foreach($produit->getImages() as $image){
                 $produit->removeImage($image);
                 unlink($this->getParameter('image_directory').'/'.$image->getNom());
                 $entityManager->remove($image);
-            }
-            $entityManager->remove($produit);
+            }*/
+            $produit->setDateDelete(new \DateTime('@'.strtotime('now')));
+            $entityManager->persist($produit);
             $entityManager->flush();
         }
 
