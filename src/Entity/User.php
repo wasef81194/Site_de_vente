@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180)
      */
     private $email;
 
@@ -64,6 +64,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $telephone;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_delete;
 
     public function getId(): ?int
     {
@@ -210,6 +215,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getDateDelete(): ?\DateTimeInterface
+    {
+        return $this->date_delete;
+    }
+
+    public function setDateDelete(?\DateTimeInterface $date_delete): self
+    {
+        $this->date_delete = $date_delete;
 
         return $this;
     }

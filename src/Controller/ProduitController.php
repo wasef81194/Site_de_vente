@@ -14,14 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-/**
- * @Route("/produit")
- */
+#[Route('/produit')]
 class ProduitController extends AbstractController
 {
-    /**
-     * @Route("/", name="produit_index", methods={"GET"})
-     */
+    #[Route('/', name: 'produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('produit/index.html.twig', [
@@ -29,9 +25,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="produit_new", methods={"GET", "POST"})
-     */
+    #[Route('/new', name: 'produit_new', methods: ["GET", "POST"])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $produit = new Produit();
@@ -71,9 +65,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="produit_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'produit_show', methods: ["GET"])]
     public function show(Request $request,Produit $produit): Response
     {
         return $this->render('produit/show.html.twig', [
@@ -81,9 +73,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="produit_edit", methods={"GET", "POST"})
-     */
+    #[Route('/{id}/edit', name: 'produit_edit', methods: ["GET", "POST"])]
     public function edit(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProduitType::class, $produit);
@@ -120,9 +110,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="produit_delete", methods={"POST"})
-     */
+    #[Route('/{id}', name: 'produit_delete', methods: ["POST"])]
     public function delete(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
@@ -139,9 +127,7 @@ class ProduitController extends AbstractController
         return $this->redirectToRoute('produit_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    /**
-    * @Route("/delete/image/{id}", name="produit_image_delete", methods={"DELETE"})
-     */
+    #[Route('/delete/image/{id}', name: 'produit_image_delete', methods: ['DELETE'])]
     public function deleteImage(Image $image,Request $request): Response
     {
         $data = json_decode($request->getContent(), true);

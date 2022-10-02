@@ -9,6 +9,10 @@
     <div class="container-fluid container-produit">
         <div class="row">
             <div class="col">
+            
+            {% if produit.images|length == 0 %}
+            <img class="card-img-top" src="{{ asset('/images/produit/no_image.jpg') }}" alt="Image du produit">
+            {% endif %}
              {% for image in produit.images %}
                 <img class="card-img-top" src="{{ asset('/uploads/' ~ image.nom) }}" alt="Image du produit">
             {% endfor %}
