@@ -51,6 +51,10 @@ footer{
         .news-letter{
             margin-top: 25px;
             form{
+                input:focus{
+                    border-color: $border-pruple;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $background-shadow-pruple;
+                }
                 button:after {
                     content: '  ➞';
                     position: absolute;
