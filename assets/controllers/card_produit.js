@@ -16,5 +16,5 @@ $(document).ready(function () {
 
 $(window).scroll(function () {
   var y = $(this).scrollTop();
-  console.log(y);
+ // console.log(y);
 });

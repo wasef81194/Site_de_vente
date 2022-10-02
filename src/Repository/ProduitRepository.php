@@ -40,9 +40,9 @@ class ProduitRepository extends ServiceEntityRepository
     public function findProductsNoDelete()
     {
             return $this->createQueryBuilder('p')
-            ->andWhere('p.date_delete = :null')
-            ->setParameter('null', 'NULL')
-            ->orderBy('p.id', 'ASC')
+            ->andWhere('p.date_delete is NULL')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult()
         ;
