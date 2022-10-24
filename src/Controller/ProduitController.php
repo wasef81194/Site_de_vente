@@ -21,7 +21,7 @@ class ProduitController extends AbstractController
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('produit/index.html.twig', [
-            'produits' => $produitRepository->findProductsNoDelete(),
+            'produits' => $produitRepository->findProductsNoDelete(12),
         ]);
     }
 

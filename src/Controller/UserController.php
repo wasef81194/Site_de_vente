@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -92,4 +93,15 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/login', name: 'app_user_login', methods: [])]
+    public function editLastDateLogin(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setLastDateLogin(new \DateTime());
+        $entityManager->persist( $user);
+        $entityManager->flush();
+        
+        return $this->redirectToRoute('produit_index', [], Response::HTTP_SEE_OTHER);
+    }
+    
 }

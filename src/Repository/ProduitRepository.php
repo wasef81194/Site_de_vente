@@ -37,12 +37,12 @@ class ProduitRepository extends ServiceEntityRepository
     */
 
     //  * @return Produit[] Returns an array of Produit objects
-    public function findProductsNoDelete()
+    public function findProductsNoDelete($maxResult)
     {
             return $this->createQueryBuilder('p')
             ->andWhere('p.date_delete is NULL')
             ->orderBy('p.id', 'DESC')
-            ->setMaxResults(12)
+            ->setMaxResults($maxResult)
             ->getQuery()
             ->getResult()
         ;

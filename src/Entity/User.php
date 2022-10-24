@@ -70,6 +70,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $date_delete;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_date_login;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_date_logout;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -227,6 +237,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDateDelete(?\DateTimeInterface $date_delete): self
     {
         $this->date_delete = $date_delete;
+
+        return $this;
+    }
+
+    public function getLastDateLogin(): ?\DateTimeInterface
+    {
+        return $this->last_date_login;
+    }
+
+    public function setLastDateLogin(?\DateTimeInterface $last_date_login): self
+    {
+        $this->last_date_login = $last_date_login;
+
+        return $this;
+    }
+
+    public function getLastDateLogout(): ?\DateTimeInterface
+    {
+        return $this->last_date_logout;
+    }
+
+    public function setLastDateLogout(?\DateTimeInterface $last_date_logout): self
+    {
+        $this->last_date_logout = $last_date_logout;
 
         return $this;
     }

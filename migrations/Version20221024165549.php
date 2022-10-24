@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221002114115 extends AbstractMigration
+final class Version20221024165549 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,6 +20,7 @@ final class Version20221002114115 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE user ADD last_date_login DATETIME DEFAULT NULL, ADD last_date_logout DATETIME DEFAULT NULL');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649450FF010 ON user (telephone)');
     }
 
@@ -27,5 +28,6 @@ final class Version20221002114115 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP INDEX UNIQ_8D93D649450FF010 ON user');
+        $this->addSql('ALTER TABLE user DROP last_date_login, DROP last_date_logout');
     }
 }

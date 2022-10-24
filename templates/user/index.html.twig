@@ -3,7 +3,7 @@
 {% block title %}Liste de tout les utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Liste de tout les utilisateurs</h1>
+    <h2>Liste de tout les utilisateurs</h2>
 
     <table class="table">
         <thead>
@@ -17,6 +17,9 @@
                 <th>Code Postal</th>
                 <th>Roles</th>
                 <th>Password</th>
+                <th>Delete</th>
+                <th>Last login</th>
+                <th>Last logout</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -32,6 +35,10 @@
                 <td>{{ user.cp }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.password }}</td>
+                <td>{{ user.dateDelete is empty ? ""  : user.dateDelete|date('d M Y H:i')|format_datetime('medium','short',locale='fr')}}</td>
+                <td>{{ user.lastDateLogin is empty ? ""  : user.lastDateLogin|date('d M Y H:i')|format_datetime('medium','short',locale='fr') }}</td>
+                <td>{{ user.lastDateLogout is empty ? ""  : user.lastDateLogout|date('d M Y H:i')|format_datetime('medium','short',locale='fr') }}</td>
+
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
