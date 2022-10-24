@@ -100,8 +100,13 @@ class UserController extends AbstractController
         $user->setLastDateLogin(new \DateTime());
         $entityManager->persist( $user);
         $entityManager->flush();
-        
         return $this->redirectToRoute('produit_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/thsi/logout', name: 'app_user_logout', methods: ['GET'])]
+    public function editLastDateLogout(User $user, EntityManagerInterface $entityManager): Response
+    {
+        dd('logout');
     }
     
 }

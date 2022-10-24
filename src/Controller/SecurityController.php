@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
@@ -25,14 +26,12 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(AuthenticationUtils $authenticationUtils, EntityManagerInterface $entityManager ): void
+    #[Route(path: '/logout', name: 'app_logout' , methods: ['GET'])]
+    public function logout(AuthenticationUtils $authenticationUtils,  EntityManagerInterface $entityManager ): Response
     {
-       /* $this->getUser()->setLastDateLogout(new \DateTime());
-        $entityManager->persist($this->getUser());
-        $entityManager->flush();
-        dd($this);*/
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        
+        dump($this);
+        //throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
         
     }
 }
